@@ -1,0 +1,59 @@
+import java.util.*;
+
+public class SetOfIntegers {
+	// ArrayList for dynamic set
+	ArrayList<Integer> set = new ArrayList<Integer>();
+	
+	// 0 = random, 1 = increasing, 2 = decreasing
+	int state = 0; 
+	
+	public SetOfIntegers() {
+		Scanner input = new Scanner(System.in);
+		String token;
+		int currentInt;
+		String setName;
+		System.out.println("Please enter the name of your set: ");
+		setName = input.next();
+      
+		System.out.println("Please enter a sequence of integers separated by spaces.");
+		System.out.println("Terminate the sequence by pressing ENTER.");
+		
+		// Read in sequence of integers to set
+		token = input.next();
+		while(!token.equals("")) {
+			currentInt = Integer.parseInt(token);
+			set.add(currentInt);
+			token = input.next();
+		}
+		
+		System.out.println("Sequence terminated.");
+		
+		// Print new set
+		for (int i = 0; i < set.size() - 1; i++) {
+			if(i == 0)
+				System.out.print(set.get(i));
+			else
+				System.out.print(", " + set.get(i));
+		}
+	}
+	
+	public void randomize() {
+		//Random r = new Random();
+		//for(int x = set.size() - 1; x > 0; x--) {
+			// int y = r.nextInt(x);
+			//int temp = set.get(x);
+			//set.get(x) = set.get(y);
+			//s.get(y) = temp;
+		//}
+      Collections.shuffle(set);
+	}
+   
+	public void sort() {
+	   System.out.println("Not yet implemented");
+	}
+	
+	public void reverse() {
+	   System.out.println("Not yet implemented");
+	}
+	
+}
