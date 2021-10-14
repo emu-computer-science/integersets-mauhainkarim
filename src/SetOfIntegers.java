@@ -53,7 +53,11 @@ public class SetOfIntegers {
 	}
 	
 	public void reverse() {
-	   System.out.println("Not yet implemented");
+	   for (int i = 0; i < set.size() / 2; i++) {
+		   Integer temp = set.get(i);
+		   set.set(i, set.get(set.size() - i - 1));
+		   set.set(set.size() - i - 1, temp);
+	   }
 	}
 	
 }
