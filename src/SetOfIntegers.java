@@ -12,7 +12,6 @@ public class SetOfIntegers {
 		String token;
 		int currentInt;
 		String setName;
-		System.out.println("Please enter the name of your set: ");
 		setName = input.next();
       
 		System.out.println("Please enter a sequence of integers separated by spaces.");

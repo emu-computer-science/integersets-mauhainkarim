@@ -4,7 +4,8 @@ public class CollectionSetOfIntegers {
 	}
 	
 	public void delete() {
-	   System.out.println("Not yet implemented");
+	   //array = null = will set all values of array to null, essentially "deleting" the array.
+		//System.gc = initializes garbage collection
 	}
 	
 	public void select() {
