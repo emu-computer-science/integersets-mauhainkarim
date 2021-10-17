@@ -48,7 +48,17 @@ public class SetOfIntegers {
 	}
    
 	public void sort() {
-	   System.out.println("Not yet implemented");
+	   int n = set.size();
+        for (int i = 1; i < n; ++i) {
+            int k = set.get(i);
+            int j = i - 1;
+ 
+            while (j >= 0 && set.get(j > k) {
+                set.get(j + 1) = set.get(j);
+                j = j - 1;
+            }
+			
+            set.get(j + 1) = k;
 	}
 	
 	public void reverse() {
@@ -57,6 +67,7 @@ public class SetOfIntegers {
 		   set.set(i, set.get(set.size() - i - 1));
 		   set.set(set.size() - i - 1, temp);
 	   }
+	   
 	}
 	
 }
