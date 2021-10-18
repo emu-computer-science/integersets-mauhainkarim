@@ -21,12 +21,13 @@ public class RunIntegerSets {
 			switch (userInput.toLowerCase()) {
 			case "show":
 				if (collect.getSize() == 0)
-					System.out.println("There are no sets.");
+					System.out.println("\nThere are no sets.");
 				else {
 					for (int i = 0; i < collect.getSize(); i++) {
 						collect.collection.get(i).printSet();
 					}
 				}
+				System.out.println();
 				cont();
 				break;
 
@@ -38,11 +39,11 @@ public class RunIntegerSets {
 			case "select":
 				// If collection is empty
 				if (collect.getSize() == 0)
-					System.out.println("There are no sets to select.");
+					System.out.println("\nThere are no sets to select.");
 
 				// If collection is not empty
 				else {
-					System.out.print("Please select a set (A - " + collect.alphabet[collect.getSize()] + "): ");
+					System.out.print("\nPlease select a set (A - " + collect.alphabet[collect.getSize()] + "): ");
 					char choice = Character.toUpperCase(input.next().charAt(0));
 					input.nextLine();
 
@@ -61,7 +62,7 @@ public class RunIntegerSets {
 
 					// If choice is valid value and in bounds
 					else if (choice > 64 && choice - 64 <= collect.getSize()) {
-						System.out.print("Set " + choice + " is now the current set: ["
+						System.out.print("\nSet " + choice + " is now the current set: ["
 								+ collect.collection.get(choice - 65).getState() + "] {");
 						for (int i = 0; i < collect.collection.get(choice - 65).getSize(); i++) {
 							if (i == 0)
@@ -74,11 +75,11 @@ public class RunIntegerSets {
 
 					// If choice is valid but out of bounds
 					else if (choice > 64 && choice < 91)
-						System.out.println("You input " + choice + ", but there is no Set " + choice + ".");
+						System.out.println("\nYou input " + choice + ", but there is no Set " + choice + ".");
 
 					// If input is invalid
 					else
-						System.out.println("Input is invalid type.");
+						System.out.println("\nInput is invalid type.");
 
 					selection = choice;
 				}
@@ -86,20 +87,28 @@ public class RunIntegerSets {
 				break;
 
 			case "delete":
-				System.out.println("Not yet implemented");
+				collect.delete(selection);
+				if(selection - 65 > collect.getSize())
+					selection = 0;
+				cont();
 				break;
 
 			case "sort":
+				if(selection <= 65 && selection >= collect.getSize())
+					collect.collection.get(selection - 65).sort();
+				else
+					System.out.println("\nPlease select a valid set.");
 				cont();
 				break;
 
 			case "reverse":
-				System.out.println("Not yet implemented");
+				collect.collection.get(selection - 65).reverse();
 				cont();
 				break;
 
 			case "randomize":
-				//
+				collect.collection.get(selection - 65).randomize();
+				cont();
 				break;
 
 			case "save":
@@ -130,7 +139,7 @@ public class RunIntegerSets {
 		Scanner input = new Scanner(System.in);
 		System.out.println("Press enter to continue...");
 		input.nextLine();
-		System.out.println("\n\n\n\n");
+		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	}
 
 }

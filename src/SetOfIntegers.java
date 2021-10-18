@@ -26,7 +26,7 @@ public class SetOfIntegers {
 			}
 		}
 
-		System.out.print("A new set, " + identifier + ", has been added: [random] {");
+		System.out.print("\nA new set, " + identifier + ", has been added: [random] {");
 
 		// Print new set
 		for (int i = 0; i < set.size(); i++) {
@@ -61,24 +61,24 @@ public class SetOfIntegers {
 			return "ERROR: INVALID STATE";
 	}
 
-	public void randomize(List<Integer> s) {
+	public void randomize() {
 		Random r = new Random();
-		for (int x = 0; x < s.size(); x++) {
-			int current = s.get(x);
-			int random = x + r.nextInt(s.size() - x);
-			s.set(x, s.get(random));
-			s.set(random, current);
+		for (int x = 0; x < set.size(); x++) {
+			int current = set.get(x);
+			int random = x + r.nextInt(set.size() - x);
+			set.set(x, set.get(random));
+			set.set(random, current);
 		}
 		state = 0;
 	}
 
-	public void sort(List<Integer> s) {
-		for (int x = 0; x < s.size(); x++) {
-			for (int y = s.size() - 1; y > x; y--) {
-				if (s.get(x) > s.get(y)) {
-					int temp = s.get(x);
-					s.set(x, s.get(y));
-					s.set(y, temp);
+	public void sort() {
+		for (int x = 0; x < set.size(); x++) {
+			for (int y = set.size() - 1; y > x; y--) {
+				if (set.get(x) > set.get(y)) {
+					int temp = set.get(x);
+					set.set(x, set.get(y));
+					set.set(y, temp);
 				}
 			}
 		}
@@ -97,7 +97,7 @@ public class SetOfIntegers {
 
 	public void printSet() {
 		// Print set
-		System.out.print(identifier + ". [" + getState() + "] {");
+		System.out.print("\n" + identifier + ". [" + getState() + "] {");
 		
 		for (int i = 0; i < set.size(); i++) {
 			if (i == 0)
@@ -105,7 +105,7 @@ public class SetOfIntegers {
 			else
 				System.out.print(", " + set.get(i));
 		}
-		System.out.println("}");
+		System.out.print("}");
 	}
 
 }

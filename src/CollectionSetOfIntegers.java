@@ -11,12 +11,28 @@ public class CollectionSetOfIntegers {
 		collection.add(set);
 	}
 	
-	public void delete() {
-		update();
-	}
-	
-	public void select() {
-	   System.out.println("Not yet implemented");
+	public void delete(int index) {
+		if (index == 0)
+			System.out.println("\nCannot delete because there is no currently selected set.");
+		else {
+			collection.remove(index - 65);
+			System.out.println("\nSet " + alphabet[index - 65] + " has been deleted. Remaining sets have been relabeled.");
+			update();
+			if(index - 65 > getSize() || getSize() == 0) {
+				System.out.println("No set is currently selected.");
+			}
+			else {
+				System.out.print("The current set is " + collection.get(index - 65).getID() + ". [" + collection.get(index - 65).getState() + "] {");
+				// Print new set
+				for (int i = 0; i < collection.get(index - 65).getSize(); i++) {
+					if (i == 0)
+						System.out.print(collection.get(index - 65).set.get(i));
+					else
+						System.out.print(", " + collection.get(index - 65).set.get(i));
+				}
+				System.out.println("}.");
+			}
+		}
 	}
 	
 	public void save() {
