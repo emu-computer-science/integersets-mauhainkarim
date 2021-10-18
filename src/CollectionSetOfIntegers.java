@@ -8,6 +8,7 @@ public class CollectionSetOfIntegers {
 	public void add() {
 		int size = collection.size();
 		SetOfIntegers set = new SetOfIntegers(alphabet[size]);
+		collection.add(set);
 	}
 	
 	public void delete() {
