@@ -1,4 +1,4 @@
-public class CollectionSetOfIntegers {
+public class CollectionSetOfIntegers{
 	public void add() {
 		SetOfIntegers set1 = new SetOfIntegers();
 	}
@@ -20,7 +20,7 @@ public class CollectionSetOfIntegers {
 	   System.out.println("Not yet implemented");
 	}
 	
-	public void quit() {
-	   System.out.println("Not yet implemented");
+	public boolean quit() {
+	   return false;
 	}
 }
