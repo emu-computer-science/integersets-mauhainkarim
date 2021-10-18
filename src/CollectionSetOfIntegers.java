@@ -1,11 +1,17 @@
-public class CollectionSetOfIntegers{
+import java.util.ArrayList;
+
+public class CollectionSetOfIntegers {
+	// Create collection of SetOfIntegers type, as well as a char array of the alphabet for naming the sets
+	ArrayList<SetOfIntegers> collection = new ArrayList<SetOfIntegers>();
+	char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+	
 	public void add() {
-		SetOfIntegers set1 = new SetOfIntegers();
+		int size = collection.size();
+		SetOfIntegers set = new SetOfIntegers(alphabet[size]);
 	}
 	
 	public void delete() {
-	   //array = null = will set all values of array to null, essentially "deleting" the array.
-		//System.gc = initializes garbage collection
+		update();
 	}
 	
 	public void select() {
@@ -23,4 +29,14 @@ public class CollectionSetOfIntegers{
 	public boolean quit() {
 	   return false;
 	}
+	
+	public void update() {
+		for(int i = 0; i < collection.size(); i++)
+			collection.get(i).setID(alphabet[i]);
+	}
+	
+	public int getSize() {
+		return collection.size();
+	}
+	
 }
