@@ -5,21 +5,17 @@ public class RunIntegerSets {
 		Scanner input = new Scanner(System.in);
 		CollectionSetOfIntegers collect = new CollectionSetOfIntegers();
 		int s = 0;
-		char selection = 0;
-		
-		System.out.println("Integer Sets by Mauhainkarim");
-		System.out.println("Made by Albara Abdulkarim, Colin Maurier, and Garrett Haines\n");
+		char selection;
 
 		do {
-			// Print menu and get command
-			System.out.println("List of Commands: ");
-			System.out.println(" - show\n - new\n - select\n - delete\n - sort\n - reverse\n - randomize\n - save\n - restore\n - quit\n");
-			System.out.println("Please enter a command by name: (ex. add)");
+			System.out.println("List of Commands : ");
+			System.out.println(" show\n add\n select\n delete\n sort\n reverse\n randomize\n save\n restore\n quit");
+			System.out.println("Please enter a command by name: (ex. add) ");
 			String userInput = input.nextLine();
 
-			// Switch statement from user input
 			switch (userInput.toLowerCase()) {
 			case "show":
+<<<<<<< HEAD
 				if (collect.getSize() == 0)
 					System.out.println("\nThere are no sets.");
 				else {
@@ -29,14 +25,19 @@ public class RunIntegerSets {
 				}
 				System.out.println();
 				cont();
+=======
+				for (int i = 0; i < collect.getSize(); i++) {
+					collect.collection.get(i).printSet();
+				}
+>>>>>>> refs/remotes/origin/master
 				break;
 
-			case "new":
+			case "add":
 				collect.add();
-				cont();
 				break;
 
 			case "select":
+<<<<<<< HEAD
 				// If collection is empty
 				if (collect.getSize() == 0)
 					System.out.println("\nThere are no sets to select.");
@@ -82,8 +83,13 @@ public class RunIntegerSets {
 						System.out.println("\nInput is invalid type.");
 
 					selection = choice;
+=======
+				System.out.print("Please select a set (A - " + collect.alphabet[collect.getSize()] + ": ");
+				selection = Character.toUpperCase(input.next().charAt(0));
+				if(selection - 65 > 0 && selection - 65 <= collect.getSize()) {
+					// Input valid
+>>>>>>> refs/remotes/origin/master
 				}
-				cont();
 				break;
 
 			case "delete":
@@ -94,6 +100,7 @@ public class RunIntegerSets {
 				break;
 
 			case "sort":
+<<<<<<< HEAD
 				if(selection <= 65 && selection >= collect.getSize())
 					collect.collection.get(selection - 65).sort();
 				else
@@ -104,6 +111,13 @@ public class RunIntegerSets {
 			case "reverse":
 				collect.collection.get(selection - 65).reverse();
 				cont();
+=======
+				//
+				break;
+
+			case "reverse":
+				System.out.println("Not yet implemented");
+>>>>>>> refs/remotes/origin/master
 				break;
 
 			case "randomize":
@@ -113,12 +127,10 @@ public class RunIntegerSets {
 
 			case "save":
 				System.out.println("Not yet implemented");
-				cont();
 				break;
 
 			case "restore":
 				System.out.println("Not yet implemented");
-				cont();
 				break;
 
 			case "quit":
@@ -127,13 +139,13 @@ public class RunIntegerSets {
 
 			default:
 				System.out.println("Unrecognized input!\n");
-				cont();
 				break;
 			}
 
 		} while (true);
 
 	}
+<<<<<<< HEAD
 	
 	public static void cont() {
 		Scanner input = new Scanner(System.in);
@@ -141,5 +153,7 @@ public class RunIntegerSets {
 		input.nextLine();
 		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	}
+=======
+>>>>>>> refs/remotes/origin/master
 
 }
