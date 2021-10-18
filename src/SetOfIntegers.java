@@ -11,37 +11,54 @@ public class SetOfIntegers {
 	public SetOfIntegers(char c) {
 		Scanner input = new Scanner(System.in);
 		identifier = c;
-		String token;
 		int currentInt;
 
-		System.out.println("Please enter a sequence of integers separated by spaces.");
+		System.out.println("\nPlease enter a sequence of integers separated by spaces.");
 		System.out.println("Terminate the sequence by pressing ENTER.");
 
 		// Read in sequence of integers to set
-		token = input.next();
-		while (!token.equals("Q")) {
-			currentInt = Integer.parseInt(token);
-			set.add(currentInt);
-			token = input.next();
+		String token = input.nextLine();
+		String[] tokens = token.split(" ");
+
+		if (tokens[0] != "") {
+			for (int i = 0; i < tokens.length; i++) {
+				set.add(Integer.parseInt(tokens[i]));
+			}
 		}
 
-		System.out.println("Sequence terminated.");
+		System.out.print("A new set, " + identifier + ", has been added: [random] {");
 
 		// Print new set
-		for (int i = 0; i < set.size() - 1; i++) {
+		for (int i = 0; i < set.size(); i++) {
 			if (i == 0)
 				System.out.print(set.get(i));
 			else
 				System.out.print(", " + set.get(i));
 		}
+		System.out.println("}.");
 	}
-	
+
 	public char getID() {
 		return identifier;
 	}
 	
 	public void setID(char c) {
 		identifier = c;
+	}
+	
+	public int getSize() {
+		return set.size();
+	}
+	
+	public String getState() {
+		if(state == 0)
+			return "random";
+		else if(state == 1)
+			return "increasing";
+		else if(state == 2)
+			return "decreasing";
+		else
+			return "ERROR: INVALID STATE";
 	}
 
 	public void randomize(List<Integer> s) {
@@ -80,17 +97,9 @@ public class SetOfIntegers {
 
 	public void printSet() {
 		// Print set
-		if(state == 0) {
-			System.out.print(identifier + ". [random] {");
-		}
-		else if(state == 1) {
-			System.out.print(identifier + ". [increasing] {");
-		}
-		else if(state == 2) {
-			System.out.print(identifier + ". [decreasing] {");
-		}
+		System.out.print(identifier + ". [" + getState() + "] {");
 		
-		for (int i = 0; i < set.size() - 1; i++) {
+		for (int i = 0; i < set.size(); i++) {
 			if (i == 0)
 				System.out.print(set.get(i));
 			else
