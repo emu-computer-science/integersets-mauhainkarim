@@ -1,3 +1,5 @@
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.*;
 
 public class SetOfIntegers {
@@ -15,7 +17,8 @@ public class SetOfIntegers {
 		int currentInt;
 
 		System.out.println("Please enter a sequence of integers separated by spaces.");
-		System.out.println("Terminate the sequence by pressing ENTER.");
+		System.out.println("Terminate the sequence by pressing ENTER (or return),\n" +
+				"then typing 'Q'. ");
 
 		// Read in sequence of integers to set
 		token = input.next();
@@ -26,16 +29,18 @@ public class SetOfIntegers {
 		}
 
 		System.out.println("Sequence terminated.");
+		System.out.println("Your current list is now:");
 
 		// Print new set
-		for (int i = 0; i < set.size() - 1; i++) {
+		for (int i = 0; i < set.size(); i++) {
 			if (i == 0)
 				System.out.print(set.get(i));
 			else
 				System.out.print(", " + set.get(i));
 		}
+		System.out.println("");
 	}
-	
+
 	public char getID() {
 		return identifier;
 	}

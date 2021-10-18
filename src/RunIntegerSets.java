@@ -9,7 +9,7 @@ public class RunIntegerSets {
 
 		do {
 			System.out.println("List of Commands : ");
-			System.out.println(" show\n  add\n select\n delete\n sort\n reverse\n randomize\n save\n restore\n quit");
+			System.out.println(" show\n add\n select\n delete\n sort\n reverse\n randomize\n save\n restore\n quit");
 			System.out.println("Please enter a command by name: (ex. add) ");
 			String userInput = input.nextLine();
 
