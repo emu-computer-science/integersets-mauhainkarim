@@ -1,10 +1,12 @@
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
-public class CollectionSetOfIntegers {
+public class CollectionSetOfIntegers implements Serializable{
 	// Create collection of SetOfIntegers type, as well as a char array of the alphabet for naming the sets
 	ArrayList<SetOfIntegers> collection = new ArrayList<SetOfIntegers>();
 	char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
-	
+
 	public void add() {
 		int size = collection.size();
 		SetOfIntegers set = new SetOfIntegers(alphabet[size]);
@@ -35,8 +37,17 @@ public class CollectionSetOfIntegers {
 		}
 	}
 	
-	public void save() {
-	   System.out.println("Not yet implemented");
+	public static void save() {
+		Scanner filename = new Scanner(System.in);
+		System.out.println("Please enter a file name to save the state of this system under: (ex: 'file.txt').");
+		String N = filename.nextLine();
+		try {
+			ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(N));
+		} catch (IOException e) {
+			System.out.println("Unable to write to file " + N + ".");
+		}
+
+
 	}
 	
 	public void restore() {

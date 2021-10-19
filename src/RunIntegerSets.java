@@ -1,7 +1,11 @@
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.*;
 
 public class RunIntegerSets {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		Scanner input = new Scanner(System.in);
 		CollectionSetOfIntegers collect = new CollectionSetOfIntegers();
 		int s = 0;
@@ -112,7 +116,7 @@ public class RunIntegerSets {
 				break;
 
 			case "save":
-				System.out.println("Not yet implemented");
+				collect.save();
 				cont();
 				break;
 
