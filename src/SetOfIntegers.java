@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 
 public class SetOfIntegers {
 	// ArrayList for dynamic set
@@ -107,5 +108,27 @@ public class SetOfIntegers {
 		}
 		System.out.print("}");
 	}
+   public void save() {
+      FileWriter wr = null;
+      try
+      {
+         System.out.println("Please enter the name of your save state: ");
+         Scanner in = new Scanner(System.in);
+         String fileName = in.nextLine();
+         wr = new FileWriter(fileName + ".txt");
+         wr.write(identifier + "\n");
+         wr.write(getState() + "\n");
+         for(int i = 0; i < set.size(); i++)
+         {
+			   wr.write(set.get(i).toString());
+         }
+         System.out.println("Successfully wrote to the file.");
+         wr.close();
+      }
+      catch(Exception e)
+      {
+         System.out.println("Error!");
+      }
+   }
 
 }
