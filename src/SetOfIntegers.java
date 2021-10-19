@@ -7,8 +7,11 @@ public class SetOfIntegers {
 
 	// 0 = random, 1 = increasing, 2 = decreasing
 	int state = 0;
+
+	// Letter associated with set
 	private char identifier;
 
+	// Constructor for creating of set using new/add method
 	public SetOfIntegers(char c) {
 		Scanner input = new Scanner(System.in);
 		identifier = c;
@@ -39,29 +42,46 @@ public class SetOfIntegers {
 		System.out.println("}.");
 	}
 
+	// Constructor for creating sets from input file
+	public SetOfIntegers(char c, int s, ArrayList<Integer> list) {
+		identifier = c;
+		state = s;
+		set = list;
+	}
+
+	// Return set identifier
 	public char getID() {
 		return identifier;
 	}
-	
+
+	// Alter set identifier
 	public void setID(char c) {
 		identifier = c;
 	}
-	
+
+	// Return set size
 	public int getSize() {
 		return set.size();
 	}
-	
+
+	// Return state of set in String
 	public String getState() {
-		if(state == 0)
+		if (state == 0)
 			return "random";
-		else if(state == 1)
+		else if (state == 1)
 			return "increasing";
-		else if(state == 2)
+		else if (state == 2)
 			return "decreasing";
 		else
 			return "ERROR: INVALID STATE";
 	}
 
+	// Return state of set in int
+	public int getStateInt() {
+		return state;
+	}
+
+	// Randomly assorts set
 	public void randomize() {
 		Random r = new Random();
 		for (int x = 0; x < set.size(); x++) {
@@ -73,6 +93,7 @@ public class SetOfIntegers {
 		state = 0;
 	}
 
+	// Sorts set in increasing order
 	public void sort() {
 		for (int x = 0; x < set.size(); x++) {
 			for (int y = set.size() - 1; y > x; y--) {
@@ -86,6 +107,7 @@ public class SetOfIntegers {
 		state = 1;
 	}
 
+	// Sorts set in decreasing order
 	public void reverse() {
 		for (int i = 0; i < set.size() / 2; i++) {
 			Integer temp = set.get(i);
@@ -96,10 +118,11 @@ public class SetOfIntegers {
 
 	}
 
+	// Print given set to terminal
 	public void printSet() {
 		// Print set
 		System.out.print("\n" + identifier + ". [" + getState() + "] {");
-		
+
 		for (int i = 0; i < set.size(); i++) {
 			if (i == 0)
 				System.out.print(set.get(i));
@@ -108,27 +131,5 @@ public class SetOfIntegers {
 		}
 		System.out.print("}");
 	}
-   public void save() {
-      FileWriter wr = null;
-      try
-      {
-         System.out.println("Please enter the name of your save state: ");
-         Scanner in = new Scanner(System.in);
-         String fileName = in.nextLine();
-         wr = new FileWriter(fileName + ".txt");
-         wr.write(identifier + "\n");
-         wr.write(getState() + "\n");
-         for(int i = 0; i < set.size(); i++)
-         {
-			   wr.write(set.get(i).toString());
-         }
-         System.out.println("Successfully wrote to the file.");
-         wr.close();
-      }
-      catch(Exception e)
-      {
-         System.out.println("Error!");
-      }
-   }
 
 }

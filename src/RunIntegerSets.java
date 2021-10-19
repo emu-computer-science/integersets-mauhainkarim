@@ -5,12 +5,12 @@ import java.io.ObjectOutputStream;
 import java.util.*;
 
 public class RunIntegerSets {
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args) throws IOException {
 		Scanner input = new Scanner(System.in);
 		CollectionSetOfIntegers collect = new CollectionSetOfIntegers();
 		int s = 0;
 		char selection = 0;
-		
+
 		System.out.println("Integer Sets by Mauhainkarim");
 		System.out.println("Made by Albara Abdulkarim, Colin Maurier, and Garrett Haines\n");
 
@@ -43,11 +43,11 @@ public class RunIntegerSets {
 			case "select":
 				// If collection is empty
 				if (collect.getSize() == 0)
-					System.out.println("\nThere are no sets to select.");
+					System.out.println("\nThere are no sets to select.\n");
 
 				// If collection is not empty
 				else {
-					System.out.print("\nPlease select a set (A - " + collect.alphabet[collect.getSize()] + "): ");
+					System.out.print("\nPlease select a set (A - " + collect.alphabet[collect.getSize() - 1] + "): ");
 					char choice = Character.toUpperCase(input.next().charAt(0));
 					input.nextLine();
 
@@ -91,40 +91,51 @@ public class RunIntegerSets {
 				break;
 
 			case "delete":
+				// Delete set and update selection as necessary
 				collect.delete(selection);
-				if(selection - 65 > collect.getSize())
+				if (selection - 65 > collect.getSize())
 					selection = 0;
 				cont();
 				break;
 
 			case "sort":
-				if(selection <= 65 && selection >= collect.getSize())
+				// Sort selected set in increasing order
+				if (selection >= 65 && (selection - 65) <= collect.getSize())
 					collect.collection.get(selection - 65).sort();
 				else
-					System.out.println("\nPlease select a valid set.");
+					System.out.println("\nPlease select a valid set." + (selection - 65));
 				cont();
 				break;
 
 			case "reverse":
-				collect.collection.get(selection - 65).reverse();
+				// Sort selected set in decreasing order
+				if (selection >= 65 && (selection - 65) <= collect.getSize()) {
+					collect.collection.get(selection - 65).sort();
+					collect.collection.get(selection - 65).reverse();
+				} else
+					System.out.println("\nPlease select a valid set." + selection);
 				cont();
 				break;
 
 			case "randomize":
-				collect.collection.get(selection - 65).randomize();
+				// Randomly assorted selected set
+				if (selection >= 65 && (selection - 65) <= collect.getSize())
+					collect.collection.get(selection - 65).randomize();
+				else
+					System.out.println("\nPlease select a valid set." + selection);
 				cont();
 				break;
 
 			case "save":
-				for (int i = 0; i < collect.getSize(); i++) {
-						collect.collection.get(i).save();
-					}
-;
+				// Save state of program in a txt file
+				collect.save();
 				cont();
 				break;
 
 			case "restore":
-				System.out.println("Not yet implemented");
+				// Restore state of program from file
+				collect.collection.clear();
+				collect.restore();
 				cont();
 				break;
 
@@ -141,8 +152,9 @@ public class RunIntegerSets {
 		} while (true);
 
 	}
-	
+
 	public static void cont() {
+		// Allows for a pause for user
 		Scanner input = new Scanner(System.in);
 		System.out.println("Press enter to continue...");
 		input.nextLine();
